@@ -1,3 +1,4 @@
+import SmoothScroll from "@/components/SmoothScroll"
 import Hero from "@/components/Hero"
 import ProductFeature from "@/components/ProductFeature"
 import KeyIngredients from "@/components/KeyIngredients"
@@ -8,15 +9,17 @@ import Footer from "@/components/Footer"
 
 const page = () => {
   return (
-    <div>
-      <Hero />
-      <ProductFeature />
-      <KeyIngredients />
-      <ShopCollection />
-      <Testimonials />
-      <RitualBanner />
-      <Footer />
-    </div>
+    <SmoothScroll>
+      <main className="bg-[#170c0a] min-h-screen">
+        <Hero />
+        <ProductFeature />
+        <KeyIngredients />
+        <ShopCollection />
+        <Testimonials />
+        <RitualBanner />
+        <Footer />
+      </main>
+    </SmoothScroll>
   )
 }
 
