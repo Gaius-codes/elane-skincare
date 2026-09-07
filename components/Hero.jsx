@@ -43,7 +43,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.15 }}
-              className="font-sans text-xs tracking-wide text-[#8A8371]"
+              className="font-sans text-xs uppercase tracking-wide text-[#8A8371]"
             >
               Skincare For A Brighter You
             </motion.p>
@@ -76,7 +76,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.56 }}
             >
-              <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1C1F1A] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
+              <button className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#1C1F1A] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
                 Shop Now
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </button>

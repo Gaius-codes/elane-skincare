@@ -42,7 +42,7 @@ export default function Header({ cartCount = 0 }) {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-sans text-[13px] tracking-wide text-[#23261F]/80 transition-colors duration-200 hover:text-[#23261F]"
+                className="font-sans font-semibold text-[13px] tracking-wide text-[#23261F]/80 transition-colors duration-200 hover:text-[#23261F]"
               >
                 {link.label}
               </a>
