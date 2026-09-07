@@ -1,107 +1,128 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import Header from './Header';
+import { useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { Award, Leaf, Sparkles, ArrowRight, Plus } from "lucide-react";
+import Header from "./Header";
+
+const BADGES = [
+  { icon: Award, label: "Dermatologist\nTested" },
+  { icon: Leaf, label: "Vegan &\nCruelty Free" },
+  { icon: Sparkles, label: "Clean\nIngredients" },
+];
+
+const TOTAL_SLIDES = 5;
 
 export default function Hero() {
+  const [slide, setSlide] = useState(1);
+
+  const nextSlide = () => setSlide((s) => (s % TOTAL_SLIDES) + 1);
+
   return (
-    <section className="relative h-[100svh] min-h-[700px] w-full overflow-hidden bg-[#1f110f]">
-      {/* Background Image with slow luxury zoom effect */}
-      <motion.div
-        initial={{ scale: 1.08, opacity: 0.8 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-        className="absolute inset-0"
-      >
-        <Image
-          src="/images/hero-image.jpg"
-          alt="ÉLANÉ botanical oil skincare treatment"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center brightness-[0.9] contrast-[1.02]"
-        />
-      </motion.div>
+    <section className="relative min-h-[600px] w-full overflow-hidden bg-[#F4EFE6] lg:min-h-[680px]">
+      {/* Replace with your hero photo — expected at /public/images/hero-product.jpg */}
+      <Image
+        src="/images/hero.png"
+        alt="Barrier Veil daily moisturizer styled with stone and leaves"
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-center"
+      />
 
-      {/* Layered Luxury Vignette Overlay */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#1f110f]/80 via-[#1f110f]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#1f110f] via-transparent to-transparent opacity-90" />
+      {/* fade so the copy panel reads clearly regardless of the photo underneath */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#F4EFE6] via-[#F4EFE6]/70 to-transparent lg:via-[#F4EFE6]/55" />
 
-      {/* Header */}
-      <Header />
+      <Header cartCount={0} />
 
-      {/* Hero Content */}
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 sm:px-10 lg:px-14">
-        <div className="max-w-xl">
-          {/* Subtitle / Category Label */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-3"
-          >
-            <span className="h-[1px] w-8 bg-[#d4af37]" />
-            <span className="font-sans text-[11px] font-medium tracking-[0.3em] uppercase text-[#d4af37]">
-              Collection 01 • Active Botanicals
-            </span>
-          </motion.div>
-
-          {/* Main Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 font-display text-4xl leading-[1.1] text-[#f5f0eb] sm:text-5xl lg:text-[3.75rem] font-light tracking-wide"
-          >
-            Your skin, at its <br className="hidden sm:inline" />
-            <span className="italic font-normal text-[#e6c594]">most luminous.</span>
-          </motion.h1>
-
-          {/* Description Snippet */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-5 max-w-md font-sans text-sm leading-relaxed tracking-wide text-[#b8aba0] font-light"
-          >
-            Formulated with cold-pressed botanical seed oils and restorative antioxidants designed to awaken natural dermal radiance.
-          </motion.p>
-
-          {/* Call to Action Group */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex items-center gap-8"
-          >
-            <a
-              href="#shop"
-              className="group relative inline-flex items-center gap-4 rounded-full border border-[#d4af37]/40 bg-[#1f110f]/80 px-8 py-4 backdrop-blur-md transition-all duration-500 hover:border-[#d4af37] hover:bg-[#1f110f] hover:shadow-[0_0_25px_rgba(212,175,55,0.2)]"
+      <div className="relative flex min-h-[600px] items-center lg:min-h-[680px]">
+        <div className="mx-auto w-full max-w-7xl px-6 pt-24 sm:px-10 lg:px-14 lg:pt-16">
+          <div className="max-w-lg">
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="font-sans text-xs tracking-wide text-[#8A8371]"
             >
-              <span className="font-sans text-xs font-medium tracking-[0.25em] uppercase text-[#f5f0eb] transition-colors group-hover:text-[#d4af37]">
-                Discover The Ritual
-              </span>
-              <span className="text-[#d4af37] transition-transform duration-300 group-hover:translate-x-1">
-                →
-              </span>
-            </a>
-          </motion.div>
+              Skincare For A Brighter You
+            </motion.p>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.28,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              className="mt-4 font-display text-4xl leading-[1.15] text-[#23261F] sm:text-5xl lg:text-[3.25rem]"
+            >
+              Your skin, at its most luminous.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.42 }}
+              className="mt-5 max-w-sm font-sans text-[15px] leading-relaxed text-[#5B5648]"
+            >
+              A lightweight daily moisturizer formulated to hydrate, restore and
+              protect — for healthy, radiant skin, every day.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.56 }}
+            >
+              <button className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#1C1F1A] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
+                Shop Now
+                <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+              </button>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.7 }}
+              className="mt-12 flex flex-wrap gap-x-8 gap-y-4"
+            >
+              {BADGES.map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-2.5">
+                  <Icon
+                    className="h-4 w-4 shrink-0 text-[#6E7A5E]"
+                    strokeWidth={1.5}
+                  />
+                  <p className="whitespace-pre-line font-sans text-[11px] leading-tight text-[#5B5648]">
+                    {label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </div>
 
-      {/* Editorial Floating Detail Badge (Bottom Right) */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        className="absolute bottom-10 right-10 hidden lg:flex items-center gap-4 rounded-full border border-white/10 bg-[#1f110f]/60 px-6 py-3 backdrop-blur-md"
-      >
-        <span className="h-2 w-2 rounded-full bg-[#d4af37] animate-pulse" />
-        <span className="font-sans text-[11px] tracking-[0.2em] uppercase text-[#b8aba0]">
-          100% Organic • Dermatologist Tested
+      {/* Image pager */}
+      {/* <div className="absolute bottom-8 right-6 flex items-center gap-3 sm:right-10 lg:right-14">
+        <span className="flex h-9 min-w-9 items-center justify-center rounded-full bg-white/80 px-3 font-sans text-xs text-[#23261F] backdrop-blur-sm">
+          {slide}/{TOTAL_SLIDES}
         </span>
-      </motion.div>
+        <button
+          aria-label="View larger"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-white/80 text-[#23261F] backdrop-blur-sm transition-colors hover:bg-white"
+        >
+          <Plus className="h-4 w-4" strokeWidth={1.5} />
+        </button>
+        <button
+          aria-label="Next photo"
+          onClick={nextSlide}
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1C1F1A] text-white transition-colors hover:bg-[#2E322A]"
+        >
+          <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+        </button>
+      </div> */}
     </section>
   );
 }
