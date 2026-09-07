@@ -76,7 +76,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.56 }}
             >
-              <button className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#1C1F1A] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
+              <button className="mt-8 inline-flex items-center gap-2 rounded-md bg-[#1c1f1a] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
                 Shop Now
                 <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
               </button>

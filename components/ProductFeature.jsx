@@ -74,7 +74,7 @@ export default function ProductFeature() {
               environmental stressors.
             </p>
 
-            <button className="mt-8 inline-flex items-center gap-3 rounded-md bg-[#1C1F1A] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
+            <button className="mt-8 inline-flex items-center gap-3 rounded-md bg-[#1c1f1a] px-6 py-3 font-sans text-sm text-white transition-colors hover:bg-[#2E322A]">
               Add to Bag
               <span className="opacity-70">$42</span>
             </button>

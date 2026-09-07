@@ -16,13 +16,13 @@ const PRODUCTS = [
     name: 'VELORA',
     subtitle: 'Barrier Repair Cream',
     price: '$42',
-    image: '/images/product-lumiere.svg',
+    image: '/images/product-velora.svg',
   },
   {
     name: 'AUREL',
     subtitle: 'Hydrating Essence',
     price: '$36',
-    image: '/images/product-lumiere.svg',
+    image: '/images/product-auriel.svg',
   },
 ];
 
